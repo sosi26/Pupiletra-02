@@ -336,7 +336,7 @@ class PupiletraGame {
         let wordFound = false;
 
         if (idealLine.length > 0) {
-            const word = idealLine.map(([r, c]) => this.grid[r][c]).join('');
+            const word = idealLine.map(([r, c]) => this.grid[Math.round(r)][Math.round(c)]).join('');
             const reversedWord = word.split('').reverse().join('');
 
             if (this.targetWords.includes(word) && !this.foundWords.has(word)) {
@@ -348,39 +348,63 @@ class PupiletraGame {
             }
         }
 
-        if (!wordFound) {
+        if (wordFound) {
+            this.selectedCells = idealLine; // Keep the ideal line highlighted if a word was found
+        } else {
+            this.selectedCells = []; // Clear selection if no word found or ideal line was invalid
             this.resetStreak();
         }
 
         this.isDragging = false;
-        this.selectedCells = [];
         this.updateGridDisplay();
     }
 
     getIdealLine(startCell, endCell) {
         const [r1, c1] = startCell;
-        const [r2, c2] = endCell;
+        let [r2, c2] = endCell; // Allow r2, c2 to be modified
         const line = [];
 
-        const dr = r2 - r1;
-        const dc = c2 - c1;
+        const dr_raw = r2 - r1;
+        const dc_raw = c2 - c1;
 
-        const isHorizontal = dr === 0;
-        const isVertical = dc === 0;
-        const isDiagonal = Math.abs(dr) === Math.abs(dc);
+        // Determine dominant direction
+        const abs_dr = Math.abs(dr_raw);
+        const abs_dc = Math.abs(dc_raw);
 
-        if (!isHorizontal && !isVertical && !isDiagonal) {
-            return []; // Not a valid line
+        let dr_final = 0;
+        let dc_final = 0;
+
+        if (abs_dr === 0 && abs_dc === 0) { // Same start and end cell
+            return [[r1, c1]];
+        } else if (abs_dr === 0) { // Pure horizontal
+            dr_final = 0;
+            dc_final = dc_raw;
+        } else if (abs_dc === 0) { // Pure vertical
+            dr_final = dr_raw;
+            dc_final = 0;
+        } else if (abs_dr === abs_dc) { // Pure diagonal
+            dr_final = dr_raw;
+            dc_final = dc_raw;
+        } else if (abs_dr > abs_dc) { // Dominant vertical, project to vertical
+            dr_final = dr_raw;
+            dc_final = 0; // Ignore horizontal component
+            c2 = c1; // Adjust end column to be same as start
+        } else { // Dominant horizontal, project to horizontal
+            dr_final = 0; // Ignore vertical component
+            dc_final = dc_raw;
+            r2 = r1; // Adjust end row to be same as start
         }
 
-        const len = Math.max(Math.abs(dr), Math.abs(dc)) + 1;
-        const stepR = dr / (len - 1);
-        const stepC = dc / (len - 1);
+        // Re-calculate len, stepR, stepC based on final (potentially adjusted) dr, dc
+        const len = Math.max(Math.abs(dr_final), Math.abs(dc_final)) + 1;
+        const stepR = len > 1 ? dr_final / (len - 1) : 0;
+        const stepC = len > 1 ? dc_final / (len - 1) : 0;
 
         for (let i = 0; i < len; i++) {
             const r = r1 + (stepR * i);
             const c = c1 + (stepC * i);
-            line.push([r, c]);
+            // Ensure integer coordinates for grid cells
+            line.push([Math.round(r), Math.round(c)]);
         }
 
         return line;

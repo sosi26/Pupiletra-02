@@ -1,0 +1,104 @@
+.info-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--scotiabank-white);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    color: var(--scotiabank-gray-dark);
+}
+
+.info-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--scotiabank-gray);
+}
+
+.info-logo {
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.info-title {
+    font-size: 3em;
+    color: var(--scotiabank-red);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.info-subtitle {
+    font-size: 1.2em;
+    color: var(--scotiabank-gray-dark);
+}
+
+.info-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--scotiabank-gray-light);
+}
+
+.info-section:last-of-type {
+    border-bottom: none;
+}
+
+.info-section h2 {
+    font-size: 2em;
+    color: var(--scotiabank-red-dark);
+    margin-bottom: 15px;
+    border-left: 5px solid var(--scotiabank-red);
+    padding-left: 10px;
+}
+
+.info-section h3 {
+    font-size: 1.5em;
+    color: var(--scotiabank-gray-dark);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-section p,
+.info-section li {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.info-section ul {
+    list-style-type: disc;
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+.info-section ul ul {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+.info-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--scotiabank-gray);
+}
+
+.info-footer p {
+    font-size: 0.9em;
+    color: var(--scotiabank-gray-dark);
+}
+
+.back-to-game-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--scotiabank-red);
+    color: var(--scotiabank-white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-game-btn:hover {
+    background-color: var(--scotiabank-red-dark);
+}

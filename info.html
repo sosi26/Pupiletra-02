@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Pupiletra Scotiabank</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/info.css">
+</head>
+<body>
+    <div class="info-container">
+        <header class="info-header">
+            <img src="public/Scotiabank_logo.svg.png" alt="Scotiabank" class="info-logo">
+            <h1 class="info-title">Pupiletra Scotiabank</h1>
+            <p class="info-subtitle">¡Descubre todas las características de nuestro emocionante juego!</p>
+        </header>
+
+        <section class="info-section">
+            <h2>1. Concepto y Objetivo del Juego</h2>
+            <p><strong>Tipo de Juego:</strong> Sopa de letras (Pupiletra) con temática de Scotiabank.</p>
+            <p><strong>Objetivo:</strong> Encontrar 7 palabras ocultas relacionadas con Scotiabank en una cuadrícula de letras.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>2. Cuadrícula y Palabras</h2>
+            <ul>
+                <li><strong>Dimensiones de la Cuadrícula:</strong> 10 columnas x 12 filas.</li>
+                <li><strong>Palabras Objetivo:</strong> Un conjunto predefinido de 7 palabras (ej. SCOTIA, PERU, BANCO, CLIENTE, INTEGRIDAD, TORONTO, FUTURO).</li>
+                <li><strong>Generación de Cuadrícula:</strong> Las palabras se colocan aleatoriamente en la cuadrícula en direcciones horizontal, vertical o diagonal. Los espacios restantes se rellenan con letras aleatorias.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>3. Temporizador</h2>
+            <ul>
+                <li><strong>Duración:</strong> 70 segundos por partida.</li>
+                <li><strong>Feedback Visual:</strong> El color del temporizador cambia a naranja (20s) y rojo (10s) para indicar urgencia.</li>
+                <li><strong>Condición de Derrota:</strong> El juego termina si el temporizador llega a cero.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>4. Sistema de Puntuación Avanzado</h2>
+            <ul>
+                <li><strong>Puntos Base por Palabra:</strong> 100 puntos por cada palabra encontrada.</li>
+                <li><strong>Bonus por Tiempo Restante:</strong> 15 puntos por cada segundo restante al finalizar la partida.</li>
+                <li><strong>Bonus por Completar:</strong> 500 puntos adicionales si se encuentran todas las palabras.</li>
+                <li><strong>Penalización por Pista:</strong> -50 puntos por cada pista utilizada.</li>
+                <li><strong>Sistema de Rachas (Streaks):</strong>
+                    <ul>
+                        <li><strong>Ventana de Racha:</strong> 10 segundos entre palabras.</li>
+                        <li><strong>Bonus por Racha:</strong> +25 puntos adicionales por cada palabra en racha.</li>
+                        <li><strong>Reinicio de Racha:</strong> Se reinicia si el tiempo excede los 10s o si hay una selección incorrecta.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>5. Sistema de Pistas</h2>
+            <ul>
+                <li><strong>Cantidad:</strong> 3 pistas disponibles por partida.</li>
+                <li><strong>Feedback:</strong> Mensaje de texto y resaltado visual de la primera letra de la palabra.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>6. Mecánicas de Interacción</h2>
+            <ul>
+                <li><strong>Selección por Arrastre (Drag-to-Select):</strong> Arrastra el dedo/ratón sobre las letras.</li>
+                <li><strong>Análisis Post-Arrastre:</strong> El sistema corrige imprecisiones del arrastre para validar la palabra.</li>
+                <li><strong>Compatibilidad Táctil:</strong> Totalmente compatible con pantallas táctiles.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>7. Elementos Visuales y de Experiencia de Usuario (UI/UX)</h2>
+            <ul>
+                <li><strong>Pantalla de Inicio (Splash Screen):</strong> Animación de fondo con letras cayendo y título animado.</li>
+                <li><strong>Indicador de Racha:</strong> Emoji (🔥) y contador visible durante las rachas.</li>
+                <li><strong>Modales de Fin de Partida:</strong> Muestran resultados, puntuación, dato curioso y formulario para el ranking.</li>
+                <li><strong>Diseño Responsivo:</strong> Se adapta a diferentes tamaños de pantalla.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>8. Persistencia de Datos</h2>
+            <p><strong>Ranking TOP 10:</strong> Las puntuaciones más altas se guardan en el <code>LocalStorage</code> del navegador.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>9. Tecnología Subyacente</h2>
+            <ul>
+                <li><strong>JavaScript Vanilla:</strong> Sin frameworks pesados.</li>
+                <li><strong>HTML5 y CSS3:</strong> Utilización de las últimas capacidades web.</li>
+                <li><strong>LocalStorage API:</strong> Para la persistencia de datos.</li>
+            </ul>
+        </section>
+
+        <footer class="info-footer">
+            <p>&copy; 2023 Scotiabank. Desarrollado por Ositech.</p>
+            <a href="index.html" class="back-to-game-btn">Volver al Juego</a>
+        </footer>
+    </div>
+</body>
+</html>

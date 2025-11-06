@@ -310,6 +310,22 @@ class PupiletraGame {
         this.updateGridDisplay();
     }
 
+    handleTouchStart(e) {
+        if (!this.isGameActive) return;
+        e.preventDefault(); // Prevent scrolling and zooming
+
+        const touch = e.touches[0];
+        const targetElement = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        if (targetElement && targetElement.classList.contains('grid-cell')) {
+            const row = parseInt(targetElement.dataset.row);
+            const col = parseInt(targetElement.dataset.col);
+            this.isDragging = true;
+            this.selectedCells = [[row, col]];
+            this.updateGridDisplay();
+        }
+    }
+
     handleMouseOver(row, col) {
         if (!this.isDragging) return;
 
@@ -320,6 +336,27 @@ class PupiletraGame {
 
         this.selectedCells.push([row, col]);
         this.updateGridDisplay();
+    }
+
+    handleTouchMove(e) {
+        if (!this.isDragging) return;
+        e.preventDefault(); // Prevent scrolling
+
+        const touch = e.touches[0];
+        const targetElement = document.elementFromPoint(touch.clientX, touch.clientY);
+
+        if (targetElement && targetElement.classList.contains('grid-cell')) {
+            const row = parseInt(targetElement.dataset.row);
+            const col = parseInt(targetElement.dataset.col);
+            
+            const lastCell = this.selectedCells.length > 0 ? this.selectedCells[this.selectedCells.length - 1] : null;
+            if (lastCell && lastCell[0] === row && lastCell[1] === col) {
+                return; // Avoid adding the same cell multiple times
+            }
+
+            this.selectedCells.push([row, col]);
+            this.updateGridDisplay();
+        }
     }
 
     handleMouseUp() {
@@ -357,6 +394,10 @@ class PupiletraGame {
 
         this.isDragging = false;
         this.updateGridDisplay();
+    }
+
+    handleTouchEnd() {
+        this.handleMouseUp(); // Touch end logic is the same as mouse up
     }
 
     getIdealLine(startCell, endCell) {
